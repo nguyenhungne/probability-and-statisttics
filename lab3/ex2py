@@ -1,0 +1,36 @@
+from fractions import Fraction
+
+# Define the sample space Ω
+S = [
+    ('Thanh', 'Nữ'), ('Hồng', 'Nữ'), ('Thương', 'Nữ'), ('Đào', 'Nữ'),
+    ('My', 'Nữ'), ('Yến', 'Nữ'), ('Hạnh', 'Nữ'), ('Vy', 'Nữ'),
+    ('Tiên', 'Nữ'), ('Thanh', 'Nam'), ('Thanh', 'Nam'), ('Bình', 'Nam'),
+    ('Nhật', 'Nam'), ('Hào', 'Nam'), ('Đạt', 'Nam'), ('Minh', 'Nam')
+]
+
+# (a) List elements of event A (students named "Thanh")
+A = {s for s in S if s[0] == 'Thanh'}
+
+# (b) List elements of event B (female students)
+B = {s for s in S if s[1] == 'Nữ'}
+
+# (c) List elements of event A ∩ B (students named "Thanh" and female)
+A_B = A & B
+
+# (d) Calculate the probability of events A, B, and A ∩ B
+def P(event, space):
+    return Fraction(len(event), len(space))
+
+P_A = P(A, S)
+P_B = P(B, S)
+P_A_B = P(A_B, S)
+
+# (e) Calculate the conditional probability P(A|B)
+P_A_given_B = P_A_B / P_B
+
+# Print the results
+print(f"Elements of event A (students named 'Thanh'): {A}")
+print(f"Elements of event B (female students): {B}")
+print(f"Elements of event A ∩ B (female students named 'Thanh'): {A_B}")
+print(f"P(A) = {P_A}, P(B) = {P_B}, P(A ∩ B) = {P_A_B}")
+print(f"Conditional probability P(A|B) is: {P_A_given_B}")
